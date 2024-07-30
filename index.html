@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    #menu {
+        background-color: #333;
+        overflow: hidden;
+    }
+    #menu a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+        font-size: 16px;
+    }
+    #menu a:hover {
+        background-color: #555;
+    }
+</style>
+</head>
+<body>
+    <div id="menu">
+        <a href="./uf.php">UF</a>
+        <a href="./municipio.php">Município</a>
+        <a href="./aluno.php">Aluno</a>
+        <a href="./disciplina.php">Disciplina</a>
+        <a href="./cursa.php">Cursa</a>
+        <a href="./relatorioAluno.php">Relatório Aluno</a>
+        <a href="./relatorioRegiao.php">Relatório por Região</a>
+        <a href="./relatorioLista.php">Relatório Lista</a>
+    </div>
+</body>
+</html>
+
+<!-- Criar a tabela UF
+CREATE TABLE UF (
+    CODIGO INT PRIMARY KEY AUTO_INCREMENT,
+    NOME VARCHAR(100),
+    SIGLA VARCHAR(2),
+    REGIAO VARCHAR(50)
+);
+
+-- Criar a tabela Municipio
+CREATE TABLE Municipio (
+    CODIGO INT PRIMARY KEY AUTO_INCREMENT,
+    NOME VARCHAR(100),
+    POPULACAO INT,
+    UF_CODIGO INT,
+    FOREIGN KEY (UF_CODIGO) REFERENCES UF(CODIGO)
+);
+
+-- Criar a tabela Aluno
+CREATE TABLE Aluno (
+    CODIGO INT PRIMARY KEY AUTO_INCREMENT,
+    NOME VARCHAR(100),
+    DATA_NCTO DATE,
+    EMAIL VARCHAR(100),
+    TELEFONE VARCHAR(20),
+    MUNICIPIO_CODIGO INT,
+    FOREIGN KEY (MUNICIPIO_CODIGO) REFERENCES Municipio(CODIGO)
+);
+
+-- Criar a tabela Disciplina
+CREATE TABLE Disciplina (
+    CODIGO INT PRIMARY KEY AUTO_INCREMENT,
+    NOME VARCHAR(100),
+    NR_AULAS INT,
+    MENSALIDADE DECIMAL(10, 2)
+);
+
+-- Criar a tabela Cursa (tabela associativa entre Aluno e Disciplina)
+CREATE TABLE Cursa (
+    ALUNO_CODIGO INT,
+    DISCIPLINA_CODIGO INT,
+    TURMA VARCHAR(50),
+    ANO INT,
+    NOTA1 DECIMAL(4, 2),
+    NOTA2 DECIMAL(4, 2),
+    FALTAS INT,
+    PRIMARY KEY (ALUNO_CODIGO, DISCIPLINA_CODIGO),
+    FOREIGN KEY (ALUNO_CODIGO) REFERENCES Aluno(CODIGO),
+    FOREIGN KEY (DISCIPLINA_CODIGO) REFERENCES Disciplina(CODIGO)
+);--> 
